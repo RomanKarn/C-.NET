@@ -1,0 +1,51 @@
+﻿<Window x:Class="TestWorkTamagochi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestWorkTamagochi"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" DataContext="{Binding Plaer}">
+            <TextBox TextAlignment="Center" Text="{Binding Name}" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" >
+            <TextBlock>Здоровье</TextBlock>
+            <ProgressBar  Minimum="0" Maximum="{Binding Plaer.HealthPlaer.MaxParam}" Value="{Binding Health}" Height="25"/>
+            <TextBlock>Еда</TextBlock>
+            <ProgressBar  Minimum="0" Maximum="{Binding Plaer.FullPlaer.MaxParam}"  Value="{Binding Full}" Height="25"/>
+            <TextBlock>Сон</TextBlock>
+            <ProgressBar  Minimum="0" Maximum="{Binding Plaer.SleepPlaer.MaxParam}"  Value="{Binding Sleep}" Height="25"/>
+            <TextBlock>Счастье</TextBlock>
+            <ProgressBar  Minimum="0" Maximum="{Binding Plaer.HeppiPlaer.MaxParam}"  Value="{Binding Happi}" Height="25"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="2"  >
+            <WrapPanel ItemHeight="40" ItemWidth="80" Margin="10"  HorizontalAlignment="Center">
+                <Button Command="{Binding EatCommand}" Margin="2" >
+                    <TextBlock TextWrapping="Wrap">Покормить</TextBlock>
+                </Button>
+                <Button Command="{Binding PlaerGameCommand}" Margin="2" >
+                    <TextBlock TextWrapping="Wrap"> Поиграть</TextBlock>
+                </Button>
+                <Button Command="{Binding SleepingCommand}" Margin="2" >
+                    <TextBlock TextWrapping="Wrap">Уложить спать</TextBlock>
+                </Button>
+                <Button Command="{Binding HealingCommand}" Margin="2" >
+                    <TextBlock TextWrapping="Wrap">Вылечить</TextBlock>
+                </Button>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>
